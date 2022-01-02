@@ -110,6 +110,33 @@ class ChangeTextTest {
         assertEquals(result, textToSet)
     }
 
+    @Test
+    fun testChangeTextToEmptyField() {
+        val packageName = MODEL_PACKAGE
+        waitForPackage(packageName)
+
+        device.findObject(By.res(packageName, "userInput")).text = "      "
+        device.findObject(By.res(packageName, "buttonChange")).click()
+
+        val result = device.findObject(By.res(packageName, "textToBeChanged")).text
+        assertEquals(result, "Hello UiAutomator!")
+    }
+
+    @Test
+    fun testChangeTextAndNewActivity() {
+        val packageName = MODEL_PACKAGE
+        waitForPackage(packageName)
+
+        device.findObject(By.res(packageName, "userInput")).text = "vou"
+        device.findObject(By.res(packageName, "buttonActivity")).click()
+        waitForPackage(packageName)
+
+        var result = device.findObject(By.res(packageName, "text")).text
+        assertEquals(result, "vou")
+    }
+
+
+
 }
 
 
