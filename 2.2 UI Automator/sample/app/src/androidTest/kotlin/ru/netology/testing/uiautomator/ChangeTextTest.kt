@@ -134,9 +134,6 @@ class ChangeTextTest {
         var result = device.findObject(By.res(packageName, "text")).text
         assertEquals(result, "vou")
     }
-
-
-
 }
 
 
